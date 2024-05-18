@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropbox Files</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #333;
+            /* Darker background */
+            color: #eee;
+            /* Lighter text */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #444;
+            /* Slightly lighter container background */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            /* Stronger box shadow */
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .title {
+            background-color: #ff7f0e;
+            /* Orangish background for titles */
+            color: #fff;
+            /* White text for titles */
+            padding: 10px 20px;
+            /* Padding for titles */
+            border-radius: 10px;
+            /* Rounded corners for titles */
+            margin-bottom: 20px;
+            /* Bottom margin for titles */
+            font-weight: bold;
+            /* Bold text for titles */
+            text-transform: uppercase;
+            /* Uppercase text for titles */
+            font-size: 24px;
+            /* Font size for titles */
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .file-item {
+            border: 3px solid transparent;
+            /* Thick border with transparent color */
+            border-radius: 10px;
+            /* Rounded corners */
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            transition: border-color 0.3s ease;
+            /* Transition for border color */
+        }
+
+        .file-item:hover {
+            border-color: #61afef;
+            /* Dark blue border on hover */
+        }
+
+        .file-info {
+            flex-grow: 1;
+        }
+
+        .file-info strong {
+            font-size: 18px;
+            text-transform: lowercase;
+            color: #fff;
+            /* White text */
+        }
+
+        .file-metadata {
+            color: #ccc;
+            /* Lighter metadata */
+            font-size: 14px;
+        }
+
+        .no-files-msg {
+            color: #ccc;
+            /* Lighter no-files message */
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .json-data {
+            background-color: #555;
+            /* Slightly lighter JSON background */
+            padding: 15px;
+            border-radius: 10px;
+            overflow: auto;
+            margin-top: 30px;
+            color: #eee;
+            /* Lighter JSON text */
+        }
+
+        .json-key {
+            color: #C678DD;
+            /* Purple for JSON keys */
+        }
+
+        .json-string {
+            color: #98C379;
+            /* Green for JSON strings */
+        }
+
+        .json-number {
+            color: #61AFEF;
+            /* Blue for JSON numbers */
+        }
+
+        .json-boolean {
+            color: #E5C07B;
+            /* Yellow for JSON booleans */
+        }
+
+        .json-null {
+            color: #D19A66;
+            /* Brownish for JSON null */
+        }
+
+        pre {
+            margin: 0;
+            font-size: 14px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Dropbox Files</div> <!-- Title for Dropbox Files -->
+        <ul class="file-list">
+            <% if (files.length> 0) { %>
+                <% files.forEach((file)=> { %>
+                    <li class="file-item">
+                        <div class="file-info">
+                            <strong>
+                                <%= file.name.toLowerCase() %>
+                            </strong> <!-- File name in lowercase -->
+                            <div class="file-metadata">
+                                <p>Size: <%= file.size %> bytes</p>
+                                <p>Modified: <%= file.modified %>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <% }); %>
+                        <% } else { %>
+                            <li class="no-files-msg">No files found.</li>
+                            <% } %>
+        </ul>
+        <div class="title">JSON Data</div> <!-- Title for JSON Data -->
+        <div class="json-data">
+            <pre><%= JSON.stringify(files.map(({ name, size, modified }) => ({ name: name.toLowerCase(), size, modified })), null, 2) %></pre>
+        </div>
+    </div>
+</body>
+
+</html>

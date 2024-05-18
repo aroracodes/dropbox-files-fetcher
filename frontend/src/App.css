@@ -1,0 +1,68 @@
+.App {
+  font-family: 'Arial', sans-serif;
+  background-color: #000;
+  /* Black background */
+  color: #ff7f0e;
+  /* Orangish text color */
+  padding: 20px;
+  height: 100vh;
+  /* Make the container occupy the full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Align content vertically in the center */
+  align-items: center;
+  /* Align content horizontally in the center */
+}
+
+.title {
+  font-size: 36px;
+  /* Increase font size */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.connect-btn {
+  background-color: #ff7f0e;
+  /* Orangish button background */
+  color: #000;
+  /* Black button text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.connect-btn:hover {
+  background-color: #ff5733;
+  /* Darker orangish color on hover */
+}
+
+.file-list {
+  margin-top: 20px;
+}
+
+.file-item {
+  border: 1px solid #ff7f0e;
+  /* Orangish border */
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.file-info strong {
+  font-size: 24px;
+  /* Increase font size */
+  text-transform: lowercase;
+}
+
+.file-metadata p {
+  margin: 5px 0;
+}
+
+.no-files-msg {
+  font-style: italic;
+  color: #ccc;
+  /* Lighter text color */
+}
